@@ -20,4 +20,12 @@ pipeline {
             }
         }
     }
+    post {
+        
+        always {
+           echo 'always execute..'
+        }
+            
+    }
+    
 }
