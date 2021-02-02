@@ -24,6 +24,7 @@ pipeline {
         
         always {
            echo 'always execute..'
+           sh 'mvn build'
         }
             
     }
