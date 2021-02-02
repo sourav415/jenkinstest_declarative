@@ -3,6 +3,11 @@ pipeline {
     tools {
         maven 'maven-3.6.3' 
     }
+    parameters{
+        string(name:'VERSION', defaultValue: '', description: 'deploy to prod' )
+        choice(name:'VERSION', choices: ['1.1','1.2'], description: 'deploy to production' )
+        booleanParam(name:'executetest', defaultValue: 'true', description: '' )
+    }
     stages {
         stage('Build') {
             steps {
