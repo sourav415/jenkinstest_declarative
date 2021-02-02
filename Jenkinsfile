@@ -4,7 +4,7 @@ pipeline {
         maven 'maven-3.6.3' 
     }
     parameters{
-        string(name:'VERSION', defaultValue: '', description: 'deploy to prod' )
+        
         choice(name:'VERSION', choices: ['1.1','1.2'], description: 'deploy to production' )
         booleanParam(name:'executetest', defaultValue: 'true', description: '' )
     }
@@ -19,7 +19,7 @@ pipeline {
             
             when {
                 expression{
-                    env.BRANCH_NAME=='dev'
+                    params.executetest
                        }
                  }
             steps {
@@ -30,6 +30,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                echo "version name is ${params.VERSION}"
             }
         }
     }
